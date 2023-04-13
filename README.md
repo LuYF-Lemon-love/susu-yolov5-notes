@@ -54,3 +54,21 @@ pip install labelme
 ```shell
 python detect.py --source data/images/bus.jpg --weights pretrained/yolov5s.pt
 ```
+
+![](./results/images/01-test.png)
+
+结果保存在 `runs\detect\exp\bus.jpg` :
+
+![](./runs/detect/exp/bus.jpg)
+
+## 数据标注 (Windows10)
+
+1. 安装:
+
+```shell
+pip install labelimg -i https://mirror.baidu.com/pypi/simple
+```
+
+2. 软件启动后的界面如下:
+
+![](./results/images/02-label.png)
