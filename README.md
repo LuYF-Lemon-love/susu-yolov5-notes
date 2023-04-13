@@ -61,6 +61,101 @@ python detect.py --source data/images/bus.jpg --weights pretrained/yolov5s.pt
 
 ![](./runs/detect/exp/bus.jpg)
 
+### Linux
+
+```shell
+conda config --remove-key channels
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.bfsu.edu.cn/anaconda/cloud/pytorch/
+conda config --set show_channel_urls yes
+pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/web/simple
+```
+
+```shell
+conda create -n yolo5 python==3.8.5
+conda activate yolo5
+```
+
+```shell
+conda activate yolo5
+```
+
+```shell
+conda install pytorch==1.8.0 torchvision
+```
+
+```shell
+pip install pycocotools
+```
+
+```shell
+pip install -r requirements.txt
+pip install pyqt5
+pip install labelme
+```
+
+```shell
+python train.py --data mask_data.yaml --cfg mask_yolov5s.yaml --weights pretrained/yolov5s.pt --epoch 100 --batch-size 32
+```
+
+1. 创建虚拟环境:
+
+```shell
+py -m venv env
+```
+
+2. 激活环境:
+
+```shell
+.\env\Scripts\activate
+```
+
+3. 确认 Python 解释器位置:
+
+```shell
+where python
+```
+
+4. Python 版本 (Python 3.8.1):
+
+```shell
+python --version
+```
+
+5. 安装 Pytorch (cpu):
+
+```shell
+pip install torch==1.9.1 torchvision==0.10.1 -i https://pypi.tuna.tsinghua.edu.cn/simple
+python -m pip install --upgrade pip
+```
+
+6. pycocotools 的安装:
+
+```shell
+pip install pycocotools-windows
+```
+
+7. 其他包的安装:
+
+```shell
+pip install -r requirements.txt
+pip install pyqt5
+pip install labelme
+```
+
+8. 测试一下:
+
+```shell
+python detect.py --source data/images/bus.jpg --weights pretrained/yolov5s.pt
+```
+
+![](./results/images/01-test.png)
+
+结果保存在 `runs\detect\exp\bus.jpg` :
+
+![](./runs/detect/exp/bus.jpg)
+
 ## 数据处理 (Windows10)
 
 1. 安装:
