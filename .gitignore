@@ -4,3 +4,4 @@ utils/__pycache__/
 CMR_dataset/
 __pycache__/
 utils/loggers/__pycache__/
+utils/loggers/wandb/__pycache__/
