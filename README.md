@@ -279,6 +279,8 @@ pip install -r win_requirements.txt
 
 ### requirements files (Linux)
 
+**Python 3.8.5**
+
 Freezing dependencies:
 
 ```shell
