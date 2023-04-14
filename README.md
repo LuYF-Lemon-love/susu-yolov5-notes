@@ -258,3 +258,11 @@ python detect.py --source 0  # webcam
               'https://youtu.be/NUsoVlDFqZg'  # YouTube video
               'rtsp://example.com/media.mp4'  # RTSP, RTMP, HTTP stream
 ```
+
+## Reference
+
+[1] [手把手教你使用YOLOV5训练自己的目标检测模型](https://www.bilibili.com/video/BV1YL4y1J7xz?p=1&vd_source=547d8a3d2ce70a88f0a699636396bd6f) .
+
+[2] [yolov5-mask-42](https://gitee.com/song-laogou/yolov5-mask-42) .
+
+[3] [手把手教你使用YOLOV5训练自己的目标检测模型-口罩检测-视频教程](https://blog.csdn.net/ECHOSON/article/details/121939535) .

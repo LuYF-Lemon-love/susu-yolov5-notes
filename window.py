@@ -208,10 +208,10 @@ class MainWindow(QTabWidget):
         self.left_img.setAlignment(Qt.AlignCenter)
         self.addTab(img_detection_widget, '图片检测')
         self.addTab(vid_detection_widget, '视频检测')
-        self.addTab(about_widget, '联系我')
+        # self.addTab(about_widget, '联系我')
         self.setTabIcon(0, QIcon('images/UI/lufei.png'))
         self.setTabIcon(1, QIcon('images/UI/lufei.png'))
-        self.setTabIcon(2, QIcon('images/UI/lufei.png'))
+        # self.setTabIcon(2, QIcon('images/UI/lufei.png'))
 
     '''
     ***上传图片***
