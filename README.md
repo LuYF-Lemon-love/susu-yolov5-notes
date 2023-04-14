@@ -101,10 +101,6 @@ pip install pyqt5
 pip install labelme
 ```
 
-```shell
-python train.py --data mask_data.yaml --cfg mask_yolov5s.yaml --weights pretrained/yolov5s.pt --epoch 100 --batch-size 32
-```
-
 6. 测试一下:
 
 ```shell
@@ -136,8 +132,6 @@ labelimg
 ![](./results/images/02-label.png)
 
 ### 数据标注
-
-虽然是yolo的模型训练，但是这里我们还是选择进行voc格式的标注，一是方便在其他的代码中使用数据集，二是我提供了数据格式转化
 
 **标注的过程是：**
 
@@ -188,16 +182,79 @@ YOLO_Mask
 
 到这里，数据集处理部分基本完结撒花了，下面的内容将会是模型训练！
 
+## 模型训练
+
+### 模型的基本训练
+
+1. 在 models 下建立一个 `mask_yolov5s.yaml` 的模型配置文件，内容如下：
+
+![](./results/images/屏幕截图%202023-04-14%20143758.png)
+
+2. 模型训练之前，请确保代码目录下有以下文件:
+
+![](./results/images/image-20211212174920551.png)
+
+3. 执行下列代码运行程序即可：
+
+```shell
+python train.py --data mask_data.yaml --cfg mask_yolov5s.yaml --weights pretrained/yolov5s.pt --epoch 100 --batch-size 4 --device cpu
+```
+
+4. gpu 训练命令:
+
+```shell
+python train.py --data mask_data.yaml --cfg mask_yolov5s.yaml --weights pretrained/yolov5s.pt --epoch 100 --batch-size 32
+```
+
+5. 训练日志保存在 [01-32.txt](./results/shell/01-32.txt)，模型保存在 [exp8](./runs/train/exp8) .
+
+![](./results/images/image-20210610145140340.png)
+
+## 模型使用
+
+模型的使用全部集成在了 `detect.py` 目录下，你按照下面的指令指你要检测的内容即可:
+
+```shell
+ # 检测摄像头
+ python detect.py  --weights runs/train/exp_yolov5s/weights/best.pt --source 0  # webcam
+ # 检测图片文件
+  python detect.py  --weights runs/train/exp_yolov5s/weights/best.pt --source file.jpg  # image 
+ # 检测视频文件
+   python detect.py --weights runs/train/exp_yolov5s/weights/best.pt --source file.mp4  # video
+ # 检测一个目录下的文件
+  python detect.py --weights runs/train/exp_yolov5s/weights/best.pt path/  # directory
+ # 检测网络视频
+  python detect.py --weights runs/train/exp_yolov5s/weights/best.pt 'https://youtu.be/NUsoVlDFqZg'  # YouTube video
+ # 检测流媒体
+  python detect.py --weights runs/train/exp_yolov5s/weights/best.pt 'rtsp://example.com/media.mp4'  # RTSP, RTMP, HTTP stream                            
+```
+
+比如以我们的口罩模型为例，如果我们执行 `python detect.py --weights runs/train/exp_yolov5s/weights/best.pt --source data/images/fishman.jpg` 的命令便可以得到这样的一张检测结果。
+
+![](./results/images/fishman.jpg)
+
+## 构建可视化界面
+
+可视化界面的部分在`window.py`文件中，是通过pyqt5完成的界面设计，在启动界面前，你需要将模型替换成你训练好的模型，替换的位置在`window.py`的第60行，修改成你的模型地址即可，如果你有GPU的话，可以将device设置为0，表示使用第0行GPU，这样可以加快模型的识别速度嗷。
+
+![](./results/images/03-window.png)
+
+![image-20211212194547804](./results/images/image-20211212194547804.png)
+
+替换之后直接右键run即可启动图形化界面了，快去自己测试一下看看效果吧
+
+![image-20211212194914890](./results/images/image-20211212194914890.png)
+
 ## 官方命令
 
 1. 按照官方给出的指令，这里的检测代码功能十分强大，是支持对多种图像和视频流进行检测的，具体的使用方法如下：
 
 ```shell
- python detect.py --source 0  # webcam
-                            file.jpg  # image 
-                            file.mp4  # video
-                            path/  # directory
-                            path/*.jpg  # glob
-                            'https://youtu.be/NUsoVlDFqZg'  # YouTube video
-                            'rtsp://example.com/media.mp4'  # RTSP, RTMP, HTTP stream
+python detect.py --source 0  # webcam
+              file.jpg  # image 
+              file.mp4  # video
+              path/  # directory
+              path/*.jpg  # glob
+              'https://youtu.be/NUsoVlDFqZg'  # YouTube video
+              'rtsp://example.com/media.mp4'  # RTSP, RTMP, HTTP stream
 ```
