@@ -187,3 +187,17 @@ YOLO_Mask
 ![image-20211212174510070](./results/images/image-20211212174510070.png)
 
 到这里，数据集处理部分基本完结撒花了，下面的内容将会是模型训练！
+
+## 官方命令
+
+1. 按照官方给出的指令，这里的检测代码功能十分强大，是支持对多种图像和视频流进行检测的，具体的使用方法如下：
+
+```shell
+ python detect.py --source 0  # webcam
+                            file.jpg  # image 
+                            file.mp4  # video
+                            path/  # directory
+                            path/*.jpg  # glob
+                            'https://youtu.be/NUsoVlDFqZg'  # YouTube video
+                            'rtsp://example.com/media.mp4'  # RTSP, RTMP, HTTP stream
+```
