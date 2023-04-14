@@ -259,6 +259,38 @@ python detect.py --source 0  # webcam
               'rtsp://example.com/media.mp4'  # RTSP, RTMP, HTTP stream
 ```
 
+## requirements files
+
+### requirements files (Windows)
+
+**Python 3.8.1**
+
+Freezing dependencies:
+
+```shell
+pip freeze > win_requirements.txt
+```
+
+Using requirements files:
+
+```shell
+pip install -r win_requirements.txt
+```
+
+### requirements files (Linux)
+
+Freezing dependencies:
+
+```shell
+pip freeze > linux_requirements.txt
+```
+
+Using requirements files:
+
+```shell
+pip install -r linux_requirements.txt
+```
+
 ## Reference
 
 [1] [手把手教你使用YOLOV5训练自己的目标检测模型](https://www.bilibili.com/video/BV1YL4y1J7xz?p=1&vd_source=547d8a3d2ce70a88f0a699636396bd6f) .
